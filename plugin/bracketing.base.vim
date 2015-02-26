@@ -175,27 +175,34 @@ set cpo&vim
 " Mappings that can be redefined {{{1
 " ==============================
 " (LH) As I use <del> a lot, I use different keys than those proposed by SR.
-"
-if !hasmapto('<Plug>MarkersMark', 'n') && (mapcheck("<M-Insert>", "n") == "")
-  nmap <unique> <M-Insert> <Plug>MarkersMark
+
+"let markersmark="<M-Insert>"
+let markersMark="<M-i>"
+if !hasmapto('<Plug>MarkersMark', 'n') && (mapcheck(markersMark, "n") == "")
+  exec "nmap <unique> ".markersMark." <Plug>MarkersMark"
 endif
-if !hasmapto('<Plug>MarkersMark', 'v') && (mapcheck("<M-Insert>", "v") == "")
-  vmap <unique> <M-Insert> <Plug>MarkersMark
+
+if !hasmapto('<Plug>MarkersMark', 'v') && (mapcheck(markersMark, "v") == "")
+  exec "vmap <unique> ".markersMark." <Plug>MarkersMark"
 endif
-if !hasmapto('<Plug>MarkersMark', 'i') && (mapcheck("<M-Insert>", "i") == "")
-  imap <unique> <M-Insert> <Plug>MarkersMark
+if !hasmapto('<Plug>MarkersMark', 'i') && (mapcheck(markersMark, "i") == "")
+  exec "imap <unique> ".markersMark." <Plug>MarkersMark"
 endif
+"let markersJumpF="<M-Del>"
+let markersJumpF="<M-d>"
 if !hasmapto('<Plug>MarkersJumpF', 'i') && (mapcheck("<M-Del>", "i") == "")
-  imap <unique> <M-Del> <Plug>MarkersJumpF
+  exec "imap <unique> ".markersJumpF." <Plug>MarkersJumpF"
 endif
 if !hasmapto('<Plug>MarkersJumpF') && (mapcheck("<M-Del>") == "")
-  map <unique> <M-Del> <Plug>MarkersJumpF
+  exec "map <unique> ".markersJumpF." <Plug>MarkersJumpF"
 endif
-if !hasmapto('<Plug>MarkersJumpB', 'i') && (mapcheck("<M-S-Del>", "i") == "")
-  imap <unique> <M-S-Del> <Plug>MarkersJumpB
+"let markersJumpB="<M-S-Del>"
+let markersJumpB="<M-S-d>"
+if !hasmapto('<Plug>MarkersJumpB', 'i') && (mapcheck(markersJumpB, "i") == "")
+  exec "imap <unique> ".markersJumpB." <Plug>MarkersJumpB"
 endif
-if !hasmapto('<Plug>MarkersJumpB') && (mapcheck("<M-S-Del>") == "")
-  map <unique> <M-S-Del> <Plug>MarkersJumpB
+if !hasmapto('<Plug>MarkersJumpB') && (mapcheck(markersJumpB) == "")
+  exec "map <unique> ".markersJumpB." <Plug>MarkersJumpB"
 endif
 
 " imap <Plug>MarkersMark  !mark!<C-R>=<sid>MoveWithinMarker()<cr>
